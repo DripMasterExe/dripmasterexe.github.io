@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FRAN's PORTFOLIO</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Montserrat:wght@100..900&family=Playfair+Display+SC:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/0ed840a746.js" crossorigin="anonymous"></script>
+  </style>
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#home" class="home-logo">FRAN</a>
+    </div>
+    <div class="tab-container">
+      <a class="tab_label nav-link" href="#portfolio">PORTFOLIO</a>
+      <a class="tab_label nav-link" href="#about">ABOUT</a>
+      <a class="tab_label nav-link" href="#contact">CONTACT</a>
+      <div class="indicator"></div>
+    </div>
+  </nav>
+
+
+  <div id="home" class="section home"></div>
+
+  <div class="button-container">
+    <a href="#about" class="about-button">About Me</a>
+  </div>
+
+
+  <section class="hero">
+    <img src="Background.png" alt="Background Art" class="madgirl-image" />
+  </section>
+
+
+  <section id="portfolio" class="portfolio">
+    <div class="portfolio-section">
+      <div class="portfolio-sidebar">
+        <div class="sidebar-image"></div>
+        <ul class="category-list">
+          <li data-category="illustrations">
+            <input type="radio" id="cat-illustrations" name="portfolio-category" checked>
+            <label for="cat-illustrations">
+              <span><i class="fa-solid fa-star"></i></span>ILLUSTRATIONS
+            </label>
+          </li>
+          <li data-category="graphics">
+            <input type="radio" id="cat-graphics" name="portfolio-category">
+            <label for="cat-graphics">
+              <span><i class="fa-solid fa-star"></i></span>GRAPHICS
+            </label>
+          </li>
+          <li data-category="portraits">
+            <input type="radio" id="cat-portraits" name="portfolio-category">
+            <label for="cat-portraits">
+              <span><i class="fa-solid fa-star"></i></span>PORTRAITS
+            </label>
+          </li>
+          <li data-category="murals">
+            <input type="radio" id="cat-murals" name="portfolio-category">
+            <label for="cat-murals">
+              <span><i class="fa-solid fa-star"></i></span>MURALS
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="portfolio-carousel-wrapper">
+        <div class="portfolio-carousel" id="gallery"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <section class="About_Me">
+        <img src="ABOUT ME.svg" alt="aboutmesvg" class="creatoridentification" />
+      </section>
+    </div>
+  </section>
+
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h3>Contact me</h3>
+        <p>&copy;2025 FranXI. All Rights Reserved | 
+          <a href="mailto:alyxafrancinejamerosecuya@gmail.com">alyxafrancinejamerosecuya@gmail.com</a>
+        </p>
+      </div>
+      <div class="footer-right">
+        <ul class="social-icons">
+          <li><a href="#home"><i class="fa fa-pinterest"></i></a></li>
+          <li><a href="#home"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#home"><i class="fab fa-discord"></i></a></li>
+          <li><a href="#home"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#home"><i class="fa fa-youtube-play"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const imageData = {
+      illustrations: ['LEGENDS.png', 'ARTCO STUFF.jpg', 'coffee_painting.jpg', 'scene.jpg', 'gusto nako malaya.jpg', 'LIKHA SKATE.jpg'],
+      graphics: ['REIMAGINED.png', 'MAGAZINE (2).png', 'PAMPHLET.png'],
+      portraits: ['Czarina.jpg', 'Lola.jpg', 'zian.JPG', 'leaf.jpg', 'bayonetta.jpg'],
+      murals: ['addu_mural.jpg', 'addu mural.jpg']
+    };
+
+    let currentCategory = 'illustrations';
+    let currentIndex = 1;
+    const gallery = document.getElementById('gallery');
+
+    function showGallery(category) {
+      currentCategory = category;
+      currentIndex = 1;
+      updateSlider();
+    }
+
+    function updateSlider() {
+      gallery.innerHTML = '';
+      const images = imageData[currentCategory];
+      const totalImages = images.length;
+
+      const imgElements = [
+        images[totalImages - 1],
+        ...images,
+        images[0]
+      ];
+
+      imgElements.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = currentCategory;
+        img.className = (i === currentIndex) ? 'active' : '';
+        gallery.appendChild(img);
+      });
+
+      gallery.scrollLeft = currentIndex * gallery.clientWidth;
+    }
+
+    function scrollGallery(direction) {
+      const images = imageData[currentCategory];
+      const totalImages = images.length;
+
+      currentIndex += direction;
+
+      if (currentIndex < 1) currentIndex = totalImages;
+      if (currentIndex > totalImages) currentIndex = 1;
+      updateSlider();
+    }
+
+    document.querySelectorAll('.category-list li').forEach(li => {
+      li.addEventListener('click', () => {
+        const category = li.getAttribute('data-category');
+        showGallery(category);
+      });
+    });
+
+    showGallery(currentCategory);
+  </script>
+
+</body>
+</html>

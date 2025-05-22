@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #a92b1a;
+  --secondary-color: #fff8de;
+  --accent-color: #e45a38;
+  --hover-color: #ffb396;
+  --orange:#ff7a10
+}
+
+body {
+  font-family: "Climate Crisis", sans-serif;
+  overflow-x: hidden;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.climate-crisis {
+  font-family: "Climate Crisis", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "YEAR" 1979;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ========================================================================================================   NAVIGESYON  ==== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.nav-left .home-logo {
+  font-size: 23px;
+  color: var(--primary-color);
+  background: var(--secondary-color);
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-right .nav-link {
+  font-size: 16px;
+  color: var(--primary-color);
+  padding: 8px 15px;
+  background: var(--secondary-color);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover, .home-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================================================  Tab Navigation (OwO) ============== */
+.tab-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  padding-top: 5px;
+  padding-right: 3px;
+  padding-left: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  height: 32px; 
+}
+
+.tab {
+  width: 130px;
+  height: 28px;
+  position: absolute;
+  opacity: 0;
+}
+
+.tab_label {
+  width: 130px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--primary-color);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.tab_label:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+/* ===========================================================  Tab Indicatow (position)(OwO) ============== */
+.tab--1:checked ~ .indicator { left: 2px; }
+.tab--2:checked ~ .indicator { left: calc(130px + 2px); }
+.tab--3:checked ~ .indicator { left: calc(130px * 2 + 2px); }
+
+
+/* ==============================================================================================  BASICALLY the BACKGROUND IMAGE  ==== */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.madgirl-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeIn 1.5s ease-in-out;
+  background-color: var(--primary-color)
+}
+
+/* ===========================================================  About button (losing my mind) ============== */
+.button-container {
+  position: absolute;
+  bottom: 115px;
+  left: 138px;
+  z-index: 5;
+}
+
+.about-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 20px;
+  padding: 10px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  animation: floatUp 2s ease-out;
+  transition: all 0.3s ease;
+}
+
+.about-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* ========================================================================================== PORTFOLIO (d2 ako nabaliw actually) ==== */
+.portfolio {
+  background-color: var(--primary-color);
+  padding: 80px 0;
+  padding-top:120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-section {
+  background-color: var(--secondary-color);
+  padding: 60px 10px;
+  width: 100%;
+  display: flex;
+  gap: 60px;
+  border-radius: 0;
+}
+
+.portfolio-sidebar {
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+  background-color: var(--secondary-color);
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.category-list input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.category-list label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+.category-list label:hover,
+.category-list input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.category-list {
+  list-style: none;
+  padding: 5px 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.category-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  position: relative; 
+}
+
+/* =========================================================== Carousell (nag breakdown ko diri actually) ============== */
+.portfolio-carousel-wrapper {
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.portfolio-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.portfolio-carousel::-webkit-scrollbar {
+  display: none; 
+}
+
+.portfolio-carousel img {
+  flex: 0 0 auto;
+  width: 380px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 15px;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+#gallery {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%; 
+}
+
+#gallery img {
+  display: inline-block;
+  height: 480px;
+  width: 320px;
+  margin-right: 10px;
+  animation: slideLeft 20s linear infinite;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); 
+  }
+}
+
+/* ==============================================================================================  Tungkol Saaken  ==== */
+.about-section {
+  background: linear-gradient(
+    180deg, 
+    #a92b1a 5%, 
+    #ff7a10 100%
+  );
+  padding: 20px;
+  display: flex;
+}
+
+.About_Me {
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* =============================================================================================== Puter  ===== */
+footer {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 20px 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-links {
+  color: var(--accents-color);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--orange)
+}
+
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons a {
+  color: var(--primary-color);
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--hover-color);
+}
+
+footer p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+/* =============================================================================================== ANIMESYOWNS (wow moving) ===== */
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
